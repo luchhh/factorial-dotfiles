@@ -24,6 +24,7 @@ alias gg='git grep'
 alias gd='git diff'
 alias gst='git diff main --compact-summary'
 alias gca='git commit --amend'
+alias gh='git log --pretty=reference'
 
 # Devenv
 alias devenv='tmuxinator start -p gitpod/.tmuxinator.yml'
