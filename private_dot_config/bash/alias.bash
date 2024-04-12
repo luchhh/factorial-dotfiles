@@ -30,6 +30,5 @@ alias gh='git log --pretty=reference'
 alias devenv='tmuxinator start -p gitpod/.tmuxinator.yml'
 
 # Factorial
-alias rails_reset='bundle exec rails db:drop db:create db:schema:load rails db:seed'
+alias rails_reset='bundle exec rails db:drop db:create db:schema:load db:seed'
 alias f_gg='bundle exec rails autodiscovery:generate_graphql_schema'
-
