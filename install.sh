@@ -10,4 +10,5 @@ popd
 
 chezmoi apply
 
-source ~/.bashrc.d/*
+echo "source ~/.config/zsh/init.zsh" >> ~/.zshrc
+source ~/.zshrc

@@ -1,7 +1,10 @@
 # First define the git functions for ZSH
+
 function git_dirty {
   git diff --quiet HEAD &>/dev/null
-  [ $? == 1 ] && echo "!"
+  if [[ $? -eq 1 ]]; then
+    echo "!"
+  fi
 }
 
 function git_prompt_info {
