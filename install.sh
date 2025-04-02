@@ -1,18 +1,13 @@
 #!/bin/bash
 
-~/bin/chezmoi init
+chezmoi init
 
 pushd ~/.local/share/chezmoi
-  git remote add origin $SUPERVISOR_DOTFILE_REPO
+  git remote add origin https://github.com/luchhh/factorial-dotfiles.git
   git branch -M main
   git pull origin main
 popd
 
-~/bin/chezmoi apply
+chezmoi apply
 
-source ~/.bashrc
-
-# Install packer dependencies
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' & disown
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' & disown # Yep, twice
-nvim --headless -c 'TSUpdateSync' & disown
+source ~/.bashrc.d/*

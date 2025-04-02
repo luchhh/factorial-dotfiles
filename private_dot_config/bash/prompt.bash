@@ -1,16 +1,14 @@
-function __git_dirty {
+# First define the git functions for ZSH
+function git_dirty {
   git diff --quiet HEAD &>/dev/null
   [ $? == 1 ] && echo "!"
 }
 
-grb_git_prompt() {
-  local g="$(__gitdir)"
-  if [ -n "$g" ]; then
-    local IS_DIRTY="$(__git_dirty)"
-    # The __git_ps1 function inserts the current git branch where %s is
-    local GIT_PROMPT=`__git_ps1 "(%s${IS_DIRTY})"`
-    echo ${GIT_PROMPT}
-  fi
+function git_prompt_info {
+  local ref
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo " (${ref#refs/heads/}$(git_dirty))"
 }
 
-PS1="\[\033[01;32m\]\w\[\033[01;34m\]\$(grb_git_prompt) \[\033[00m\]\$ "
+# Then set the prompt with proper spacing
+PS1='%F{green}%~%F{blue}$(git_prompt_info)%f $ '
